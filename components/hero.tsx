@@ -13,13 +13,14 @@ export const Hero = () => {
       x: 0,
       y: 0,
       transition: {
-        delay: 0.05,
+        delay: 0.5,
+        duration: 1,
       },
     },
   };
 
   return (
-    <div className="w-full h-48 md:h-96 flex items-center">
+    <section className="w-full h-48 md:h-96 flex items-center px-4 xl:px-0">
       <div className="w-full h-full flex justify-center items-center relative">
         <Image
           src="/heroBanner.png"
@@ -44,6 +45,6 @@ export const Hero = () => {
           />
         </MotionDiv>
       </div>
-    </div>
+    </section>
   );
 };
