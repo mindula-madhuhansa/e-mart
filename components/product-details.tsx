@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-
-import { urlForImage } from "@/sanity/lib/image";
+import { useContext, useState } from "react";
 import { MinusIcon, PlusIcon } from "lucide-react";
+
+import { Product } from "@/types";
+import { urlForImage } from "@/sanity/lib/image";
+import { CartContext } from "@/context/cart-context";
 
 type Props = {
   product: Product;
@@ -12,6 +14,7 @@ type Props = {
 
 export const ProductDetails = ({ product }: Props) => {
   const [selectedImage, setSelectedImage] = useState(0);
+  const { qty, setQty }: any = useContext(CartContext);
 
   return (
     <div className="w-full md:py-16">
@@ -49,9 +52,19 @@ export const ProductDetails = ({ product }: Props) => {
           <div className="flex gap-x-2 items-center">
             <h3 className="text-lg font-medium">Quantity:</h3>
             <p className="p-4 font-bold flex gap-x-8 items-center border justify-between border-black">
-              <MinusIcon size={12} />
-              <span>1</span>
-              <PlusIcon size={12} />
+              <MinusIcon
+                onClick={() => {
+                  if (qty > 1) {
+                    setQty(qty - 1);
+                  }
+                }}
+                className="size-4 cursor-pointer"
+              />
+              <span>{qty}</span>
+              <PlusIcon
+                onClick={() => setQty(qty + 1)}
+                className="size-4 cursor-pointer"
+              />
             </p>
           </div>
 

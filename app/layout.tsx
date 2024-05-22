@@ -3,6 +3,7 @@ import { Urbanist } from "next/font/google";
 
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import { CartProvider } from "@/context/cart-context";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -19,12 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={urbanist.className}>
-        <header className="border-b">
-          <Navbar />
-        </header>
-        <main className="max-w-xl md:max-w-7xl mx-auto px-4 xl:px-0">
-          {children}
-        </main>
+        <CartProvider>
+          <header className="border-b">
+            <Navbar />
+          </header>
+          <main className="max-w-xl md:max-w-7xl mx-auto px-4 xl:px-0">
+            {children}
+          </main>
+        </CartProvider>
       </body>
     </html>
   );

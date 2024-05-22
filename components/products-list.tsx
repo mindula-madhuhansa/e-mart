@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 
+import { Product } from "@/types";
 import { client } from "@/sanity/lib/client";
 import { ProductCard } from "@/components/product-card";
 

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { Product } from "@/types";
 import { urlForImage } from "@/sanity/lib/image";
 
 export const ProductCard = ({ product }: { product: Product }) => {

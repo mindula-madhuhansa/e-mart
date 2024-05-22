@@ -1,4 +1,4 @@
-type ProductImage = {
+export type ProductImage = {
   _type: string;
   _key: string;
   asset: {
@@ -7,7 +7,7 @@ type ProductImage = {
   };
 };
 
-type Product = {
+export type Product = {
   _id: string;
   _updatedAt: string;
   price: number;
