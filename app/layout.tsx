@@ -19,8 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={urbanist.className}>
-        <Navbar />
-        {children}
+        <header className="border-b">
+          <Navbar />
+        </header>
+        <main className="max-w-xl md:max-w-7xl mx-auto px-4 xl:px-0">
+          {children}
+        </main>
       </body>
     </html>
   );
