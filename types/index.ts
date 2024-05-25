@@ -17,6 +17,7 @@ export type Product = {
   name: string;
   images: ProductImage[];
   description: string;
+  quantity: number;
   slug: {
     current: string;
     _type: string;

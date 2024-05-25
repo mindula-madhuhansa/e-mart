@@ -14,7 +14,7 @@ type Props = {
 
 export const ProductDetails = ({ product }: Props) => {
   const [selectedImage, setSelectedImage] = useState(0);
-  const { qty, setQty }: any = useContext(CartContext);
+  const { qty, setQty, addProduct, cartItems }: any = useContext(CartContext);
 
   return (
     <div className="w-full md:py-16">
@@ -68,7 +68,10 @@ export const ProductDetails = ({ product }: Props) => {
             </p>
           </div>
 
-          <button className="w-[80%] py-2 text-lg border-2 border-orange-400 text-black hover:text-white font-semibold hover:bg-orange-400 transition">
+          <button
+            onClick={() => addProduct(product, qty)}
+            className="w-[80%] py-2 text-lg border-2 border-orange-400 text-black hover:text-white font-semibold hover:bg-orange-400 transition"
+          >
             Add to Cart
           </button>
         </div>
