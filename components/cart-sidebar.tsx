@@ -18,6 +18,29 @@ export const CartSidebar = () => {
     onRemove,
   }: any = useContext(CartContext);
 
+  const handleCheckout = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/checkout`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ products: cartItems }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      }
+    } catch (error) {
+      console.error("Something went wrong", error);
+    }
+  };
+
   return (
     <aside className="w-screen bg-black bg-opacity-50 fixed right-0 top-0 z-10">
       <div className="border bg-white h-screen w-[600px] float-right px-10 py-12 relative">
@@ -87,6 +110,7 @@ export const CartSidebar = () => {
 
             <button
               type="button"
+              onClick={handleCheckout}
               className="w-full py-2 text-lg border-2 border-orange-400 text-black hover:text-white font-semibold hover:bg-orange-400 transition"
             >
               Pay with Stripe
